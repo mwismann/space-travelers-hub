@@ -12,7 +12,7 @@ const getRockets = createAsyncThunk(
     } catch (error) {
       return error;
     }
-  }
+  },
 );
 
 export default getRockets;

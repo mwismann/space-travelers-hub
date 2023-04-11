@@ -25,8 +25,8 @@ const rocketsSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = false;
         state.error = action.payload;
-      })
-  }
+      });
+  },
 });
 
 export default rocketsSlice.reducer;
