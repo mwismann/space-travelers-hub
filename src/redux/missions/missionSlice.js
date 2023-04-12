@@ -1,36 +1,32 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const url = 'https://api.spacexdata.com/v3/missions';
 
 export const getMissons = createAsyncThunk('missions/getMission',
-async(_, {rejectWithValue}) => {
-  try {
-      const response = await fetch(url)
-      const data = response.json()
-      return data
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await fetch(url);
+      const data = response.json();
+      return data;
     } catch (error) {
-      return rejectWithValue({message: error.message})
+      return rejectWithValue({ message: error.message });
     }
-  }
-)
+  });
 
 const initialState = {
   missions: [],
   isLoading: false,
   error: null,
-}
+};
 
 const missionsSlice = createSlice({
-  name: "missions",
+  name: 'missions',
   initialState,
   reducers: {
-    reserveToggle: (state, action) => ({
-      ...state,
-      missions: missions.map((mission) => {
-        return mission.mission_id === action.payload ?
-        {...mission, reserved: mission.reserved ? false : true} : mission;
-      })
-    })
+    reserveToggle: (state, action) => {
+      state.missions = state.missions.map((mission) => (mission.mission_id === action.payload
+        ? { ...mission, reserved: !mission.reserved } : mission));
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -45,9 +41,9 @@ const missionsSlice = createSlice({
       .addCase(getMissons.rejected, (state, action) => ({
         ...state,
         error: action.payload,
-      }))
-  }
-})
+      }));
+  },
+});
 
 export const { reserveToggle } = missionsSlice.actions;
 export default missionsSlice.reducer;
