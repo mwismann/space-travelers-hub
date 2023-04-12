@@ -13,3 +13,23 @@ async(_, {rejectWithValue}) => {
     }
   }
 )
+
+const initialState = {
+  missions: [],
+  isLoading: false,
+  error: null,
+}
+
+const missionsSlice = createSlice({
+  name: missions,
+  initialState,
+  reducers: {
+    reserveToggle: (state, action) => ({
+      ...state,
+      missions: missions.map((mission) => {
+        return mission.mission_id === action.payload ?
+        {...mission, reserved: !mission.reserved} : mission;
+      })
+    })
+  }
+})
