@@ -11,7 +11,7 @@ const Missions = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="missions">
       {
         isLoading
         && <div>Loading...</div>
@@ -20,35 +20,41 @@ const Missions = () => {
         error
         && <div>Error</div>
       }
-      <div>
-        {
-          missions
-          && (
-          <div>
-            {' '}
+      {
+        missions
+        && (
+          <table>
+            <tr>
+              <th>Mission</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>{' '}</th>
+            </tr>
             {
-            missions.map((mission) => (
-              <div key={mission.mission_id}>
-                <p>{mission.mission_name}</p>
-                <p>{mission.description}</p>
-                {
-                  mission.reserved
-                    ? <div><button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserved</button></div>
-                    : (
-                      <div>
-                        <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserve</button>
-                      </div>
-                    )
-                }
-              </div>
-            ))
-          }
-            {' '}
-
-          </div>
-          )
-        }
-      </div>
+              missions.map((mission) => (
+                <tr key={mission.mission_id}>
+                  <td>{mission.mission_name}</td>
+                  <td>{mission.description}</td>
+                  {
+                    mission.reserved
+                      ? <td className="active-member-text">Active Member</td>
+                      : <td className="active-member-text">NOT A MEMBER</td>
+                  }
+                  {
+                    mission.reserved
+                      ? (
+                        <td className="active-member-button">
+                          <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserved</button>
+                        </td>
+                      )
+                      : <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserve</button>
+                  }
+                </tr>
+              ))
+            }
+          </table>
+        )
+      }
     </div>
   );
 };
