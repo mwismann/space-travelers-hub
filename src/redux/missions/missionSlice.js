@@ -28,7 +28,7 @@ const missionsSlice = createSlice({
       ...state,
       missions: missions.map((mission) => {
         return mission.mission_id === action.payload ?
-        {...mission, reserved: !mission.reserved} : mission;
+        {...mission, reserved: mission.reserved ? false : true} : mission;
       })
     })
   },
