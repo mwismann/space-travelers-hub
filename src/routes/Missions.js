@@ -44,10 +44,10 @@ const Missions = () => {
                     mission.reserved
                       ? (
                         <td className="active-member-button">
-                          <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserved</button>
+                          <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Leave Mission</button>
                         </td>
                       )
-                      : <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserve</button>
+                      : <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button>
                   }
                 </tr>
               ))
