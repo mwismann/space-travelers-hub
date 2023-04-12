@@ -21,7 +21,7 @@ const initialState = {
 }
 
 const missionsSlice = createSlice({
-  name: missions,
+  name: "missions",
   initialState,
   reducers: {
     reserveToggle: (state, action) => ({
@@ -31,5 +31,23 @@ const missionsSlice = createSlice({
         {...mission, reserved: !mission.reserved} : mission;
       })
     })
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getMissons.pending, () => ({
+        isLoading: true,
+      }))
+      .addCase(getMissons.fulfilled, (state, action) => ({
+        ...state,
+        isLoading: false,
+        missions: action.payload,
+      }))
+      .addCase(getMissons.rejected, (state, action) => ({
+        ...state,
+        error: action.payload,
+      }))
   }
 })
+
+export const { reserveToggle } = missionsSlice.actions;
+export default missionsSlice.reducer;
