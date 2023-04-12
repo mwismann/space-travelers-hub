@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getMissons } from '../redux/missions/missionSlice';
+import { getMissons, reserveToggle } from '../redux/missions/missionSlice';
 
 const Missions = () => {
   const { missions, isLoading, error } = useSelector((state) => state.missions);
@@ -33,10 +33,10 @@ const Missions = () => {
                 <p>{mission.description}</p>
                 {
                   mission.reserved
-                    ? <div><button type="button">Reserved</button></div>
+                    ? <div><button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserved</button></div>
                     : (
                       <div>
-                        <button type="button">Reserve</button>
+                        <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Reserve</button>
                       </div>
                     )
                 }
