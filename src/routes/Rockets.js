@@ -9,7 +9,7 @@ const Rockets = () => {
 
   useEffect(() => {
     dispatch(getRockets());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="rockets-container">
