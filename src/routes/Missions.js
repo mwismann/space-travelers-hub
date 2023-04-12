@@ -31,6 +31,15 @@ const Missions = () => {
               <div key={mission.mission_id}>
                 <p>{mission.mission_name}</p>
                 <p>{mission.description}</p>
+                {
+                  mission.reserved
+                    ? <div><button type="button">Reserved</button></div>
+                    : (
+                      <div>
+                        <button type="button">Reserve</button>
+                      </div>
+                    )
+                }
               </div>
             ))
           }

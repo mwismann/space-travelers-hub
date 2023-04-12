@@ -40,6 +40,7 @@ const missionsSlice = createSlice({
           mission_name: mission.mission_name,
           mission_id: mission.mission_id,
           description: mission.description,
+          reserved: false,
         })),
       }))
       .addCase(getMissons.rejected, (state, action) => ({
