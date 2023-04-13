@@ -32,25 +32,25 @@ const Missions = () => {
             </tr>
             {
               missions.map((mission, index) => {
-                const trColor = index % 2 === 0 ? 'bg-gray-200' : '';
+                const trColor = index % 2 === 0 ? 'bg-[#f2f2f2]' : '';
                 const trClass = `border ${trColor}`;
                 return (
                   <tr key={mission.mission_id} className={trClass}>
-                    <th className="border px-2 py-4 text-left">{mission.mission_name}</th>
-                    <td className="border px-6 py-4 text-sm font-normal">{mission.description}</td>
+                    <th className="border px-2 py-4 text-left align-top">{mission.mission_name}</th>
+                    <td className="border px-6 py-4 text-sm font-normal align-top">{mission.description}</td>
                     {
                     mission.reserved
-                      ? <td className="border px-3 py-4 whitespace-nowrap text-sm font-normal">Active Member</td>
-                      : <td className="border px-3 py-4 whitespace-nowrap text-sm font-normal"><p className="bg-gray-300">NOT A MEMBER</p></td>
+                      ? <td className="border px-3 py-4 whitespace-nowrap text-xs text-white font-medium"><p className="bg-[#18a2b8] px-2 py-1 align-center rounded">Active Member</p></td>
+                      : <td className="border px-3 py-4 whitespace-nowrap text-xs text-white font-medium"><p className="bg-[#6d757d] px-2 py-1 aling-center rounded">NOT A MEMBER</p></td>
                   }
                     {
                     mission.reserved
                       ? (
-                        <td className="border">
-                          <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Leave Mission</button>
+                        <td className="border px-6 py-4 whitespace-nowrap text-sm">
+                          <button type="button" className="border border-red-600 text-red-600 font-medium px-4 py-2 rounded-md" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Leave Mission</button>
                         </td>
                       )
-                      : <td className="border"><button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button></td>
+                      : <td className="border px-6 py-4 whitespace-nowrap text-sm"><button type="button" className="border border-gray-900 px-4 py-2 rounded-md" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button></td>
                   }
                   </tr>
                 );
