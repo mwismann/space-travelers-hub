@@ -35,4 +35,16 @@ describe('Missions', () => {
 
     store.dispatch = jest.fn();
   });
+
+  test('renders mission table', async () => {
+    render(
+      <Provider store={store}>
+        <Missions />
+      </Provider>,
+    );
+
+    expect(screen.getByText('Mission')).toBeInTheDocument();
+    expect(screen.getByText('Description')).toBeInTheDocument();
+    expect(screen.getByText('Status')).toBeInTheDocument();
+  });
 })
