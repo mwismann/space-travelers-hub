@@ -25,22 +25,25 @@ const Missions = () => {
         && (
           <table className="table-auto border-collapse border border-slate-400 mt-5 w-5/6 m-auto">
             <tr className="border">
-              <th className="border">Mission</th>
-              <th className="border">Description</th>
-              <th className="broder">Status</th>
+              <th className="border text-left px-6 py-4">Mission</th>
+              <th className="border text-left">Description</th>
+              <th className="broder text-left">Status</th>
               <th>{' '}</th>
             </tr>
             {
-              missions.map((mission) => (
-                <tr key={mission.mission_id} className="border">
-                  <th className="border">{mission.mission_name}</th>
-                  <td className="border">{mission.description}</td>
-                  {
+              missions.map((mission, index) => {
+                const trColor = index % 2 === 0 ? 'bg-gray-200' : '';
+                const trClass = `border ${trColor}`;
+                return (
+                  <tr key={mission.mission_id} className={trClass}>
+                    <th className="border px-2 py-4 text-left">{mission.mission_name}</th>
+                    <td className="border px-6 py-4 text-sm font-normal">{mission.description}</td>
+                    {
                     mission.reserved
-                      ? <td className="border">Active Member</td>
-                      : <td className="border">NOT A MEMBER</td>
+                      ? <td className="border px-3 py-4 whitespace-nowrap text-sm font-normal">Active Member</td>
+                      : <td className="border px-3 py-4 whitespace-nowrap text-sm font-normal"><p className="bg-gray-300">NOT A MEMBER</p></td>
                   }
-                  {
+                    {
                     mission.reserved
                       ? (
                         <td className="border">
@@ -49,8 +52,9 @@ const Missions = () => {
                       )
                       : <td className="border"><button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button></td>
                   }
-                </tr>
-              ))
+                  </tr>
+                );
+              })
             }
           </table>
         )
