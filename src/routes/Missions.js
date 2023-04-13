@@ -23,31 +23,31 @@ const Missions = () => {
       {
         missions
         && (
-          <table>
-            <tr>
-              <th>Mission</th>
-              <th>Description</th>
-              <th>Status</th>
+          <table className="table-auto border-collapse border border-slate-400 mt-5 w-5/6 m-auto">
+            <tr className="border">
+              <th className="border">Mission</th>
+              <th className="border">Description</th>
+              <th className="broder">Status</th>
               <th>{' '}</th>
             </tr>
             {
               missions.map((mission) => (
-                <tr key={mission.mission_id}>
-                  <td>{mission.mission_name}</td>
-                  <td>{mission.description}</td>
+                <tr key={mission.mission_id} className="border">
+                  <th className="border">{mission.mission_name}</th>
+                  <td className="border">{mission.description}</td>
                   {
                     mission.reserved
-                      ? <td className="active-member-text">Active Member</td>
-                      : <td className="active-member-text">NOT A MEMBER</td>
+                      ? <td className="border">Active Member</td>
+                      : <td className="border">NOT A MEMBER</td>
                   }
                   {
                     mission.reserved
                       ? (
-                        <td className="active-member-button">
+                        <td className="border">
                           <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Leave Mission</button>
                         </td>
                       )
-                      : <td><button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button></td>
+                      : <td className="border"><button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button></td>
                   }
                 </tr>
               ))
