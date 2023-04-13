@@ -47,7 +47,7 @@ const Missions = () => {
                           <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Leave Mission</button>
                         </td>
                       )
-                      : <button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button>
+                      : <td><button type="button" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button></td>
                   }
                 </tr>
               ))
