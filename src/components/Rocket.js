@@ -9,21 +9,21 @@ const Rocket = ({
   const dispatch = useDispatch();
 
   return (
-    <li>
+    <li className="px-12 flex gap-6">
+      <img src={img} alt="Rocket" className="object-cover w-52 h-48" />
       <div>
-        <img src={img} alt="Rocket" />
-      </div>
-      <div>
-        <h2>{name}</h2>
-        <div>
+        <h2 className="text-xl font-medium">{name}</h2>
+        <p className="mt-2">
           {isReserved && <Badge />}
-          <p>{description}</p>
-        </div>
+          {' '}
+          {description}
+        </p>
         {(isReserved
           ? (
             <button
               type="button"
               onClick={() => dispatch(cancelReservation(id))}
+              className="mt-6 py-1 px-4 text-red-500 border border-red-500 rounded hover:bg-red-500 hover:text-white"
             >
               Cancel Reservation
             </button>
@@ -31,6 +31,7 @@ const Rocket = ({
           : (
             <button
               type="button"
+              className="mt-6 py-1 px-4 text-white bg-[#0d6efd] rounded hover:bg-[#0a5eba]"
               onClick={() => dispatch(reserveRocket(id))}
             >
               Reserve Rocket
