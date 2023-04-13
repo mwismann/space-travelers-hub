@@ -59,4 +59,20 @@ describe('Missions', () => {
     const leaveButton2 = screen.getByText('Leave Mission');
     expect(leaveButton2).toBeInTheDocument();
   });
+
+  test('testing join and leave toggle', async () => {
+    render(
+      <Provider store={store}>
+        <Missions />
+      </Provider>,
+    );
+
+    const joinButton1 = screen.getByText('Join Mission');
+    fireEvent.click(joinButton1);
+    expect(store.dispatch).toHaveBeenCalledWith(reserveToggle('1'));
+
+    const leaveButton2 = screen.getByText('Leave Mission');
+    fireEvent.click(leaveButton2);
+    expect(store.dispatch).toHaveBeenCalledWith(reserveToggle('2'));
+  });
 })
