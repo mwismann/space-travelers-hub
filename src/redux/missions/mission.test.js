@@ -3,8 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import Missions from '../../routes/Missions';
-import { getMissons, reserveToggle } from './missionSlice';
-
+import { reserveToggle } from './missionSlice';
 
 const mockStore = configureMockStore([]);
 
@@ -75,4 +74,4 @@ describe('Missions', () => {
     fireEvent.click(leaveButton2);
     expect(store.dispatch).toHaveBeenCalledWith(reserveToggle('2'));
   });
-})
+});
