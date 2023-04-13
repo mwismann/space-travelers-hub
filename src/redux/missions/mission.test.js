@@ -46,5 +46,11 @@ describe('Missions', () => {
     expect(screen.getByText('Mission')).toBeInTheDocument();
     expect(screen.getByText('Description')).toBeInTheDocument();
     expect(screen.getByText('Status')).toBeInTheDocument();
+
+    const mission1 = screen.getByText('Mission 1');
+    expect(mission1).toBeInTheDocument();
+    expect(screen.getByText('Mission 1 description')).toBeInTheDocument();
+    const joinButton1 = screen.getByText('Join Mission');
+    expect(joinButton1).toBeInTheDocument();
   });
 })
