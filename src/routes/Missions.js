@@ -23,7 +23,7 @@ const Missions = () => {
       {
         missions
         && (
-          <table className="table-auto border-collapse border border-slate-400 mt-5 w-5/6 m-auto">
+          <table className="table-auto border-collapse border border-slate-400 my-7 w-5/6 m-auto">
             <tr className="border">
               <th className="border text-left px-6 py-4">Mission</th>
               <th className="border text-left">Description</th>
@@ -47,7 +47,7 @@ const Missions = () => {
                     mission.reserved
                       ? (
                         <td className="border px-6 py-4 whitespace-nowrap text-sm">
-                          <button type="button" className="border border-red-600 text-red-600 font-medium px-4 py-2 rounded-md" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Leave Mission</button>
+                          <button type="button" className="border border-red-500 text-red-500 font-medium px-4 py-2 rounded-md" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Leave Mission</button>
                         </td>
                       )
                       : <td className="border px-6 py-4 whitespace-nowrap text-sm"><button type="button" className="border border-gray-900 px-4 py-2 rounded-md" onClick={() => dispatch(reserveToggle(mission.mission_id))}>Join Mission</button></td>
