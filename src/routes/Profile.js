@@ -5,7 +5,7 @@ const Profile = () => {
   const { missions } = useSelector((state) => state.missions);
 
   return (
-    <div>
+    <div className="container w-11/12 mt-4 mx-auto flex justify-between">
       <div>
         <h2>My Missions</h2>
         <ul>
@@ -14,11 +14,11 @@ const Profile = () => {
           ))}
         </ul>
       </div>
-      <div>
-        <h2>My Rockets</h2>
-        <ul>
+      <div className="w-1/2">
+        <h2 className="text-2xl font-medium">My Rockets</h2>
+        <ul className="mt-2 border rounded">
           {rockets.filter((rocket) => rocket.isReserved === true).map((rocket) => (
-            <li key={rocket.id}>{rocket.rocket_name}</li>
+            <li key={rocket.id} className="h-16 pt-3 pl-6 font-medium border-b last:border-b-0">{rocket.rocket_name}</li>
           ))}
         </ul>
       </div>
