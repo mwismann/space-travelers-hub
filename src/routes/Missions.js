@@ -7,8 +7,11 @@ const Missions = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (missions.length > 0) {
+      return;
+    }
     dispatch(getMissons());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="missions">
