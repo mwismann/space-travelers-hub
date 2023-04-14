@@ -4,12 +4,17 @@ import getRockets from '../redux/rockets/actions';
 import Rocket from '../components/Rocket';
 
 const Rockets = () => {
-  const { rockets, isLoading, error } = useSelector((state) => state.rockets);
+  const {
+    rockets, isLoading, isSuccess, error,
+  } = useSelector((state) => state.rockets);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (isSuccess) {
+      return;
+    }
     dispatch(getRockets());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="rockets-container">
